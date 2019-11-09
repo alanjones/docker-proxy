@@ -1,0 +1,6 @@
+[template]
+src  = "exceptionphraselist.tmpl"
+dest = "/opt/etc/e2guardian/lists/exceptionphraselist"
+keys = [
+  "/e2guardian/confdir"
+]

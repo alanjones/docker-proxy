@@ -1,0 +1,6 @@
+[template]
+src  = "e2guardianf1.conf.tmpl"
+dest = "/opt/etc/e2guardian/e2guardianf1.conf"
+keys = [
+  "/e2guardian/confdir"
+]
