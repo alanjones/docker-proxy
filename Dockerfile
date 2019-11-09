@@ -14,6 +14,10 @@ RUN cd /code/e2guardian-5.3.3/ && \
 
 FROM alpine:latest as prod
 COPY --from=build /usr/local /opt
-RUN apk add --update --no-cache --quiet libgcc libstdc++ pcre openssl \
-    shadow tzdata
-
+COPY confd /etc/confd
+COPY entrypoint.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN echo "http://nl.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
+    apk add --update --no-cache libgcc libstdc++ pcre openssl confd shadow tzdata 
+EXPOSE 8080
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
