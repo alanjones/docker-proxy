@@ -15,9 +15,9 @@ RUN cd /code/e2guardian-5.3.3/ && \
                 '--enable-email=yes' '--enable-ntlm=yes' \
                 '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' \
                 '--enable-pcre=yes' '--enable-sslmitm=yes' \
-                --disable-dependency-tracking 'CPPFLAGS=-mno-sse2 -g -O2' && \
-    make && \ 
-    make install
+                --disable-dependency-tracking --quiet 'CPPFLAGS=-mno-sse2 -g -O2' && \
+    make -s && \ 
+    make -s install
 
 FROM alpine:latest as prod
 COPY --from=build /opt /opt
