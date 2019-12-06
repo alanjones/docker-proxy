@@ -25,7 +25,7 @@ COPY confd /etc/confd
 COPY entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN echo "http://nl.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
-    apk add --update --no-cache libgcc libstdc++ pcre openssl confd shadow tzdata 
+    apk add --update --no-cache libgcc libstdc++ pcre openssl confd shadow tzdata curl
 RUN groupmod -g 1000 users && \
     useradd -u 1000 -U -d /opt/e2guardian -s /bin/false e2guardian && \
     usermod -G users e2guardian
